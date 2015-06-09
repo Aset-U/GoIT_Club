@@ -58,16 +58,19 @@ public class AnagramAction {
 	    int lastIndex = strArray.length-1;
 	    boolean flag;
         
-        for	(int i=0; i<strArray.length; i++){
+        for	(int i=0; i<strArray.length; i++) {
+        	
         	flag = false;
+        	
         	for(char ch : alphabet) {
         		if(strArray[i] == ch){
         			flag = true;
         		}
 
         	}
-        	if(!flag)
+        	if(!flag){
         		newStr[i] = strArray[i];
+        	}
         	else{
         		if(strArray[i]!='\0'){
         			setOfCharacters[lastIndex] = strArray[i];
