@@ -2,14 +2,11 @@ package com.goit.tasks.task1;
 
 import java.util.ArrayList;
 
-public class Anagram {
+public class AnagramAction {
 	private ArrayList<Character> alphabet = new ArrayList<Character>();
 		
-	public Anagram(String s) { 
+	public AnagramAction() { 
 		alphabetInit();
-		if (s.equals(""))
-        	System.out.println("Sorry...try again!");
-		startAnagram(s);
 	}
 		
 	private void alphabetInit(){
@@ -34,18 +31,28 @@ public class Anagram {
         }
 	}
 	
-	private void startAnagram(String text) {
+	public String getAnagram(String text) {
+		
+		if (text.isEmpty()){
+			System.out.println("Sorry...try again!");
+		}
+        	
 		   String finishText = "";
 		   String parts[] = text.split(" ");
-		   for (String str : parts)
-			   finishText += turnString(str) + " ";
-		   System.out.println(finishText);
+		   
+		   for (String str : parts) {
+			   finishText += turningString(str) + " ";
+		   }
+			   
+		   
+		   return finishText;
 		   
 	}
 	
-	private String turnString(String s){
-		ArrayList<Character> ar = new ArrayList<Character>();
-		char[] strArray = s.toCharArray();
+	private String turningString(String s) {
+		
+		ArrayList<Character> array = new ArrayList<Character>();
+		char[] strArray = s.toCharArray(); 
 		char[] newStr = new char[strArray.length];
 	    char[] setOfCharacters = new char[strArray.length];
 	    int lastIndex = strArray.length-1;
@@ -71,22 +78,19 @@ public class Anagram {
         }
         for	(char t: setOfCharacters){
         	if (t != '\0'){
-        		ar.add(t);
+        		array.add(t);
         	}
         		
         }
         int index = 0;
         for(int i = 0; i<newStr.length; i++) {
         	if (newStr[i] == '\0'){
-        		newStr[i] = ar.get(index);
+        		newStr[i] = array.get(index);
         		index++;
         	}
         }
 	    
 		return String.valueOf(newStr);
 	}
-	
-	
-	
 	
 }

@@ -13,6 +13,9 @@ public class Main {
     	Scanner scanner = new Scanner(System.in);
         String text = scanner.nextLine();
        
-        new Anagram(text);
+        AnagramAction myAnagram = new AnagramAction();
+        String anagram = myAnagram.getAnagram(text);
+        
+        System.out.println(anagram);
     }
 }
