@@ -22,14 +22,14 @@ public class ArithmeticDivider {
 		for (char c : res) {
 			int n = (c-'0')*divisor;
 			multiplicationProducts.add(n); 
-		}
+			}
 		
-		char numbers[] = number1.toCharArray(); 
-		
+		char numbers[] = number1.toCharArray();
+				
 		for (char ch : numbers){
 			int n = ch-'0';
 			particles.add(n);
-		}
+			}
 		
 		runDivision();
 		createDrawing(divisible, divisor, didvisionResult); 
@@ -46,44 +46,45 @@ public class ArithmeticDivider {
 			int size = String.valueOf(product).length();
 			
 			if (i == 0) {
-				for	(int j = 0; j<size; j++) {
+				for (int j = 0; j<size; j++) {
 					interimResult += particles.get(0);
 					particles.remove(0);
 			 } 
-			
-			int number = Integer.parseInt(interimResult);
-			int resultNumber = number - product;
-			
-			if (resultNumber > 0) {
-				StringBuilder builder = new StringBuilder();
-				builder.append(resultNumber);
-				char[] resNum = builder.reverse().toString().toCharArray();
-				for (char ch : resNum) {
-					int c = ch-'0';
-					particles.add(0, c);
-				}
-			  }
-			}
-			else if(product != 0){
-			for	(int j = 0; j<size; j++) {
-					interimResult += particles.get(0);
-				    particles.remove(0);
-				} 
-
-			int number = Integer.parseInt(interimResult);
-			interimResults.add(number);
-			int resultNumber = number - product;
-			
-			if (resultNumber > 0) {
-				StringBuilder builder = new StringBuilder();
-				builder.append(resultNumber);
-				char[] resNum = builder.reverse().toString().toCharArray();
-				for (char ch : resNum) {
-					int c = ch-'0';
-					particles.add(0, c);
+				
+				int number = Integer.parseInt(interimResult);
+				int resultNumber = number - product;
+				
+				if (resultNumber > 0) {
+					StringBuilder builder = new StringBuilder();
+					builder.append(resultNumber);
+					char[] resNum = builder.reverse().toString().toCharArray();
+					
+					for (char ch : resNum) {
+						int c = ch-'0';
+						particles.add(0, c);
+						}
 					}
 				}
-			  }
+			else if(product != 0) {
+				for	(int j = 0; j<size; j++) {
+					interimResult += particles.get(0);
+					particles.remove(0);
+					} 
+				int number = Integer.parseInt(interimResult);
+				interimResults.add(number);
+				int resultNumber = number - product;
+				
+				if (resultNumber > 0) {
+					StringBuilder builder = new StringBuilder();
+					builder.append(resultNumber);
+					char[] resNum = builder.reverse().toString().toCharArray();
+					
+					for (char ch : resNum) {
+						int c = ch-'0';
+						particles.add(0, c);
+						}
+					}
+				}
 			}
 		}
 	
@@ -105,33 +106,34 @@ public class ArithmeticDivider {
 		
 		builder.append("  |--------- \n");
 		builder.append(" -" + getMultiplicationProducts().get(0));
-	
+		
 		for (int i = 1; i <= length; i++) {
 			builder.append(" ");
-		}
+			}
 		
 		builder.append(" | " + result + "\n");
-		builder.append("  ----" + "\n");
+		builder.append(" ----" + "\n");
 		
 		String t = " ";
 		
 		for (int i = 1; i<getMultiplicationProducts().size(); i++) {
 			try {
 				builder.append(t + " " + getInterimResults().get(i-1) + "\n");
-			    builder.append(t + "-" + getMultiplicationProducts().get(i) + "\n");
-			    builder.append(t + "---- \n");
-			    t += " ";
-			} catch (IndexOutOfBoundsException e) {
-				builder.append(t + " " + getInterimResults().get(interimResults.size()-1) + "\n");
-			    builder.append(t + "-" + getMultiplicationProducts().get(i) + "\n");
-			    builder.append(t + "---- \n");
-			    t += " ";
+				builder.append(t + "-" + getMultiplicationProducts().get(i) + "\n");
+				builder.append(t + "---- \n");
+				t += " ";
+				} catch (IndexOutOfBoundsException e) {
+					builder.append(t + " " + getInterimResults().get(interimResults.size()-1) + "\n");
+					builder.append(t + "-" + getMultiplicationProducts().get(i) + "\n");
+					builder.append(t + "---- \n");
+					t += " ";
 			}
 			
-		}
+			}
+		
 		builder.append(" " + t + 0);
 		drawing = builder.toString();
-	} 
+		}
 	
 	public List<Integer> getMultiplicationProducts() {
 		return multiplicationProducts;
