@@ -13,5 +13,10 @@ public class Main {
 		String number1 = scanner.nextLine();
 		String number2 = scanner.nextLine();
 
+		ArithmeticDivider arithmeticDivider = new ArithmeticDivider();
+		
+		String s = arithmeticDivider.getLongDivision(number1, number2);
+		
+		System.out.print(s);
 	}
 }
