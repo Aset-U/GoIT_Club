@@ -65,7 +65,7 @@ public class ArithmeticDivider {
 						}
 					}
 				}
-			else if(product != 0) {
+			else  {
 				for	(int j = 0; j<size; j++) {
 					interimResult += particles.get(0);
 					particles.remove(0);
@@ -123,11 +123,11 @@ public class ArithmeticDivider {
 				builder.append(t + "---- \n");
 				t += " ";
 				} catch (IndexOutOfBoundsException e) {
-					builder.append(t + " " + getInterimResults().get(interimResults.size()-1) + "\n");
+			    	builder.append(t + " " + getInterimResults().get(interimResults.size()-1) + "\n");
 					builder.append(t + "-" + getMultiplicationProducts().get(i) + "\n");
 					builder.append(t + "---- \n");
 					t += " ";
-			}
+			    }
 			
 			}
 		
