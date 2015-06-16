@@ -52,6 +52,13 @@ public class ArithmeticDivider {
 			 } 
 				
 				int number = Integer.parseInt(interimResult);
+				
+				if (number < product) {
+					interimResult += particles.get(0);
+					particles.remove(0);
+					number = Integer.parseInt(interimResult);
+				}
+				
 				int resultNumber = number - product;
 				
 				if (resultNumber > 0) {
@@ -71,6 +78,13 @@ public class ArithmeticDivider {
 					particles.remove(0);
 					} 
 				int number = Integer.parseInt(interimResult);
+				
+				if (number < product){
+					interimResult += particles.get(0);
+					particles.remove(0);
+					number = Integer.parseInt(interimResult);
+				}
+				
 				interimResults.add(number);
 				int resultNumber = number - product;
 				
@@ -118,10 +132,12 @@ public class ArithmeticDivider {
 		
 		for (int i = 1; i<getMultiplicationProducts().size(); i++) {
 			try {
-				builder.append(t + " " + getInterimResults().get(i-1) + "\n");
-				builder.append(t + "-" + getMultiplicationProducts().get(i) + "\n");
-				builder.append(t + "---- \n");
-				t += " ";
+				if (getMultiplicationProducts().get(i) != 0) {
+					builder.append(t + " " + getInterimResults().get(i-1) + "\n");
+					builder.append(t + "-" + getMultiplicationProducts().get(i) + "\n");
+					builder.append(t + "---- \n");
+					t += " ";
+					}
 				} catch (IndexOutOfBoundsException e) {
 			    	builder.append(t + " " + getInterimResults().get(interimResults.size()-1) + "\n");
 					builder.append(t + "-" + getMultiplicationProducts().get(i) + "\n");
