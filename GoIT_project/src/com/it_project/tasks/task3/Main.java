@@ -19,6 +19,6 @@ public class Main {
 		String s = arithmeticDivider.getLongDivision(number1, number2);
 
 		System.out.print(s);
-		
+
 	}
 }

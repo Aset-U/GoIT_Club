@@ -14,7 +14,9 @@ public class Divider {
 	private List<Integer> particles = new ArrayList<Integer>(); 
 	private String drawing;
 	
-	private String getResult(double d) {
+	public Divider(){}
+	
+	public String getResult(double d) {
 		List<Character> list = new LinkedList<Character>();
 		int indexPoint = String.valueOf(d).indexOf(".");
 		char[] beforePoint = String.valueOf(d).substring(0, indexPoint).toCharArray(); 
@@ -70,6 +72,7 @@ public class Divider {
 	}
 	
 	public String getLongDivision (String number1, String number2)  {
+		
 		
 		double divisible = Double.parseDouble(number1.toString());
 		double divisor = Double.parseDouble(number2.toString());
@@ -212,7 +215,8 @@ public class Divider {
 		String t = " ";
 		
 		for (int i = 1; i<getMultiplicationProducts().size(); i++) {
-			try {
+			if (getMultiplicationProducts().get(i) != 0) {
+				try {
 				builder.append(t + " " + getInterimResults().get(i-1) + "\n");
 				builder.append(t + "-" + getMultiplicationProducts().get(i) + "\n");
 				builder.append(t + "---- \n");
@@ -223,7 +227,9 @@ public class Divider {
 					builder.append(t + "---- \n");
 					t += " ";
 					}
+			  }
 			}
+			
 		
 		builder.append(" " + t + 0);
 		drawing = builder.toString();
