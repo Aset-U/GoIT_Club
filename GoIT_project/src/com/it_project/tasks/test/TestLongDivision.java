@@ -37,20 +37,18 @@ public class TestLongDivision {
 	@Test (expected = IndexOutOfBoundsException.class)
 	public void testDivisorForIndexOutOfBoundsException(){
 		Divider divider = new Divider();	
-		String number1 = "1";
-		String number2 = "1000000";
-		String actual = divider.getLongDivision(number1, number2);
+		String divisible = "1";
+		String divisor = "1000000";
+		String actual = divider.getLongDivision(divisible, divisor);
 		fail("test for IndexOutOfBoundsException");
-	
-			
 	}
 	
 	@Test (expected = ArrayIndexOutOfBoundsException.class)
 	public void testDivisorForArrayIndexOutOfBoundsException(){
 		Divider divider = new Divider();	
-		String number1 = "1";
-		String number2 = "111111111";
-		String actual = divider.getLongDivision(number1, number2);
+		String divisible = "1";
+		String divisor = "111111111";
+		String actual = divider.getLongDivision(divisible, divisor);
 		fail("test for ArrayIndexOutOfBoundsException");
 	}
 }
