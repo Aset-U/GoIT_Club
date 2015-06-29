@@ -34,34 +34,23 @@ public class TestLongDivision {
 		assertEquals(expected, actual);
 	}
 	
-	@Test
+	@Test (expected = IndexOutOfBoundsException.class)
 	public void testDivisorForIndexOutOfBoundsException(){
 		Divider divider = new Divider();	
 		String number1 = "1";
 		String number2 = "1000000";
-		String actual = null;
-		try {
-			actual = divider.getLongDivision(number1, number2);
-			fail("test for IndexOutOfBoundsException");
-
-		}catch(IndexOutOfBoundsException e){
-			
-		}		
+		String actual = divider.getLongDivision(number1, number2);
+		fail("test for IndexOutOfBoundsException");
+	
 			
 	}
 	
-	@Test
+	@Test (expected = ArrayIndexOutOfBoundsException.class)
 	public void testDivisorForArrayIndexOutOfBoundsException(){
 		Divider divider = new Divider();	
 		String number1 = "1";
 		String number2 = "111111111";
-		String actual = null;
-		try {
-			actual = divider.getLongDivision(number1, number2);
-			fail("test for ArrayIndexOutOfBoundsException");
-		}catch(ArrayIndexOutOfBoundsException e){
-
-		}		
-			
+		String actual = divider.getLongDivision(number1, number2);
+		fail("test for ArrayIndexOutOfBoundsException");
 	}
 }
